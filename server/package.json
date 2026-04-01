@@ -7,11 +7,13 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "start": "node server.js"
   },
   "dependencies": {
     "cors": "^2.8.6",
     "express": "^5.2.1",
+    "mongodb": "^7.1.1",
     "mongoose": "^9.3.3",
     "mongose": "^0.0.2-security"
   },
