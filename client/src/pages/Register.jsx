@@ -6,11 +6,14 @@ import { auth } from "../../firebase.config"
 
 import { feedbackToast } from "../utils/feedbackToast"
 
+import ActionButton from "../components/ActionButton"
+
 function Register() {
     const [login, setLogin] = useState('')
     const [password, setPassword] = useState('')
     const [username, setUsername] = useState('')
     const [cell, setCell] = useState('')
+    const [isLoading, setIsloagind] = useState(false)
 
     let navigate = useNavigate()
 
@@ -30,37 +33,40 @@ function Register() {
                 })
             })
 
-            feedbackToast("Conta criada com sucesso!", "success")
+            feedbackToast("Conta criada com sucesso!", true)
             navigate("/login")
         } catch (err) {
-            feedbackToast(`Ocorreu um erro: ${err}`, "error")
+            feedbackToast(`Ocorreu um erro: ${err}`, false)
+            setIsloagind(false)
         }
     }
 
     function handleRegister(e){
         e.preventDefault()
-
+        
         if(login == "") { 
-            feedbackToast("Preencha o campo de email!", "error")
+            feedbackToast("Preencha o campo de email!", false)
             return false 
         }
         if(password == "") { 
-            feedbackToast("Preencha o campo de senha!", "error")
+            feedbackToast("Preencha o campo de senha!", false)
             return false
-         }
+        }
         if(username == "") { 
-            feedbackToast("Preencha o campo de usuário!", "error")
+            feedbackToast("Preencha o campo de usuário!", false)
             return false 
         }
         if(cell == "") { 
-            feedbackToast("Informe um número de Whatsapp!", "error")
+            feedbackToast("Informe um número de Whatsapp!", false)
             return false
-         }
-
+        }
+        
+        setIsloagind(true)
         createUserWithEmailAndPassword(auth, login, password).then((userCredential) => {
             sendUser(userCredential.user.uid)
         }).catch((err) => {
-            alert(`Ocorreu um erro: ${err}`)
+            feedbackToast(`Ocorreu um erro: ${err}`, false)
+            setIsloagind(false)
         })
     }
 
@@ -87,7 +93,7 @@ function Register() {
                                 <input type="tel" name="cell" placeholder="Telefone (Whatsapp)" onChange={e => setCell(e.target.value)} />
                             </div>
                         </div>
-                        <input type="submit" value="Criar conta" className="bg-linear-to-r from-primary to-accent mt-[30px] p-[15px] text-white font-medium rounded-[10px] cursor-pointer"/>
+                        <ActionButton text="Criar conta" isLoading={isLoading} />
                         <span>Já possuí uma conta? <Link to={"/login"} className="text-primary underline">Faça login</Link></span>
                     </form>
                 </div>

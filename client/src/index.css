@@ -51,3 +51,7 @@ form{
     border: 1px solid var(--color-accent);
   }
 }
+
+input:disabled, button:disabled{
+  opacity: 0.6;
+}
