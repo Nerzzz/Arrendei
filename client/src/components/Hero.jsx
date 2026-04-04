@@ -2,7 +2,7 @@ import { Link } from 'react-router'
 
 function Hero() {
   return (
-    <div className="flex mt-[50px] bg-linear-to-r from-primary to-accent text-white p-[0 30px] items-center justify-evenly rounded-b-[10px]">
+    <div className="flex bg-linear-to-r from-primary to-accent text-white p-[0 30px] items-center justify-evenly rounded-b-[10px]">
         <div className='flex flex-col'>
             <h1>Deseja anunciar?</h1>
             <p>Para anunciar seus itens, basta criar ou entrar em sua conta!</p>

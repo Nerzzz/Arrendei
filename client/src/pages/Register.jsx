@@ -34,7 +34,7 @@ function Register() {
             })
 
             feedbackToast("Conta criada com sucesso!", true)
-            navigate("/login")
+            navigate("/")
         } catch (err) {
             feedbackToast(`Ocorreu um erro: ${err}`, false)
             setIsloagind(false)
