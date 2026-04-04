@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import { onAuthStateChanged } from "firebase/auth"
 import { auth } from "../firebase.config"
 
-import Header from './components/Header'
+import Aside from './components/Aside'
 
 import Feed from './pages/Feed'
 import Login from './pages/Login'
@@ -19,22 +19,20 @@ import 'react-toastify/dist/ReactToastify.css'
 
 function AppContent(){
   const location = useLocation()
-  const hideHeader = location.pathname === "/login" || location.pathname === "/register" || location.pathname === "/profile"
+  const hideAside = location.pathname === "/login" || location.pathname === "/register"
 
   return(
-    <div className="min-h-screen flex flex-col">
-      {!hideHeader && <Header />}
-
-      <div className="flex-1">
+    <div className="min-h-screen flex">
+      {!hideAside && <Aside />}
+      <div className="flex-1 flex flex-col">
         <Routes>
           <Route path='/' element={<Feed />}/>
           <Route path='/login' element={<Login />}/>
           <Route path='/register' element={<Register />}/>
           <Route path='/profile' element={<Profile />}/>
         </Routes>
+        <ToastContainer position="top-right" />
       </div>
-
-      <ToastContainer position="top-right" />
     </div>
   )
 }

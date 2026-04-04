@@ -8,7 +8,7 @@ function Feed() {
   const user = useContext(AuthContext)
 
   return (
-    <main  className='flex flex-col gap-[40px] mt-[80px]'>
+    <main>
         {!user && <Hero />}
         <section>
             <h2>Anúncios</h2>

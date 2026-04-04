@@ -4,6 +4,9 @@
 
 @theme{
   --color-primary: #3caa53;
+  --color-secondary: ;
+  --color-gray: #efefef;
+  --color-element-bg: #fbfbfb;
 
   --color-accent: #4bbe64;
 }
@@ -22,11 +25,16 @@ h2{
   font-weight: 600;
 }
 
+main{
+  display: flex;
+  flex-direction: column;
+}
+
 section{
   display: flex;
   flex-direction: column;
   padding: 0 40px;
-  margin: 20px 0;
+  margin: 50px 0;
 }
 
 .Toastify{
@@ -39,11 +47,11 @@ form{
   gap: 20px;
 
   input:not([type="submit"]){
-    background-color: #f8f8f8;
+    background-color: var(--color-element-bg);
     padding: 15px;
     border-radius: 10px;
     outline: none;
-    border: 1px solid #efefef;
+    border: 1px solid var(--color-gray);
     min-width: 300px;
   }
 
@@ -54,4 +62,8 @@ form{
 
 input:disabled, button:disabled{
   opacity: 0.6;
+}
+
+.grad-green-to-right{
+  background: linear-gradient(to right, var(--color-primary), var(--color-accent));
 }
