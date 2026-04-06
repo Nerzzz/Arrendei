@@ -18,11 +18,11 @@
 
 h1{
   font-size: 20pt;
-  font-weight: 700;
+  font-weight: 600;
 }
 h2{
   font-size: 18pt;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 main{
@@ -46,16 +46,17 @@ form{
   flex-direction: column;
   gap: 20px;
 
-  input:not([type="submit"]){
+  input:not([type="submit"]), textarea{
     background-color: var(--color-element-bg);
     padding: 15px;
     border-radius: 10px;
     outline: none;
     border: 1px solid var(--color-gray);
     min-width: 300px;
+    width: 100%;
   }
 
-  input:not([type="submit"]):focus, input:not([type="submit"]):hover{
+  input:not([type="submit"]):focus, input:not([type="submit"]):hover, textarea:hover{
     border: 1px solid var(--color-accent);
   }
 }

@@ -1,4 +1,4 @@
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import { useState } from 'react'
 
 import { signInWithEmailAndPassword } from 'firebase/auth'
@@ -12,6 +12,8 @@ function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+
+  let navigate = useNavigate()
 
   function loginHandler(e){
     e.preventDefault()
@@ -28,6 +30,7 @@ function Login() {
     setIsLoading(true)
     signInWithEmailAndPassword(auth, email, password).then(() => {
       feedbackToast("login realizado com sucesso!", true)
+      navigate("/")
     }).catch((err) => {
       feedbackToast(`Ocorreu um erro: ${err.message}`, false)
       setIsLoading(false)

@@ -2,7 +2,11 @@ import React from 'react'
 
 function Profile() {
   return (
-    <div>Profile</div>
+    <main className='flex'>
+      <section>
+        
+      </section>
+    </main>
   )
 }
 

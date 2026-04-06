@@ -28,11 +28,6 @@ const postSchema = new mongoose.Schema({
                type: String,
                required: true
           },
-          views:{
-               type: Number,
-               required: false,
-               default: 0
-          },
           likes:{
                type: Number,
                required: false,

@@ -12,6 +12,7 @@ import Feed from './pages/Feed'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Profile from './pages/Profile'
+import Announce from './pages/Announce'
 
 import { AuthContext } from './utils/authContext'
 
@@ -24,12 +25,13 @@ function AppContent(){
   return(
     <div className="min-h-screen flex">
       {!hideAside && <Aside />}
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col overflow-y-auto h-[100dvh]">
         <Routes>
           <Route path='/' element={<Feed />}/>
           <Route path='/login' element={<Login />}/>
           <Route path='/register' element={<Register />}/>
           <Route path='/profile' element={<Profile />}/>
+          <Route path='/announce' element={<Announce />}/>
         </Routes>
         <ToastContainer position="top-right" />
       </div>
