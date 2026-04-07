@@ -8,15 +8,16 @@ import ActionButton from "../components/ActionButton"
 import { feedbackToast } from "../utils/feedbackToast"
 
 function CreatePost() {
+     let navigate = useNavigate()
+
+     let user = useContext(AuthContext)
 
      const [title, setTitle] = useState("")
      const [desc, setDesc] = useState("")
      const [files, setFiles] = useState([])
      const [iType, setItype] = useState("")
 
-     let user = useContext(AuthContext)
-
-     let navigate = useNavigate()
+     const [isLoading, setIsloading] = useState(false)
 
      async function createPost(e){
           e.preventDefault()
@@ -37,6 +38,8 @@ function CreatePost() {
                feedbackToast("Informe o tipo do seu item!", false)
                return
           }
+
+          setIsloading(true)
           
           const formData = new FormData()
 
@@ -57,9 +60,11 @@ function CreatePost() {
 
                if(response){
                     feedbackToast(`Item anunciado com sucesso!`, true)
+                    navigate("/")
                }
           } catch(err){
                feedbackToast(`Um erro ocorreu: ${err}`, false)
+               setIsloading(false)
                return
           }
      }
@@ -96,7 +101,7 @@ function CreatePost() {
                          
                          <span className="mt-[30px] text-[10pt] text-gray-500">*O número de contato fornecido na criação da conta será divulgado neste post</span>
 
-                         <ActionButton text="Criar Post" className="mt-[30px]" />
+                         <ActionButton text="Criar Post" className="mt-[30px]" isLoading={isLoading} />
                     </form>
                </section>
           </main>

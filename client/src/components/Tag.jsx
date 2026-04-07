@@ -1,0 +1,7 @@
+function Tag(props) {
+     return (
+          <span className={`${props.isRent ? "bg-red-500 text-red-800" : "bg-accent text-green-800"} px-[8px] py-[2px] text-[10pt] font-medium rounded-full`}>{props.isRent ? "Alugado" : "Disponível"}</span>
+     )
+}
+
+export default Tag

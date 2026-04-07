@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react'
 import { onAuthStateChanged } from "firebase/auth"
 import { auth } from "../firebase.config"
 
+import PrivateRoute from "./guards/PrivateRoute"
+
 import Aside from './components/Aside'
 
 import Feed from './pages/Feed'
@@ -29,9 +31,9 @@ function AppContent(){
         <Routes>
           <Route path='/' element={<Feed />}/>
           <Route path='/login' element={<Login />}/>
-          <Route path='/register' element={<Register />}/>
-          <Route path='/profile' element={<Profile />}/>
-          <Route path='/announce' element={<Announce />}/>
+          <Route path='/register' element={<Register />} />
+          <Route path='/profile' element={<PrivateRoute><Profile /></PrivateRoute>}/>
+          <Route path='/announce' element={<PrivateRoute><Announce /></PrivateRoute>}/>
         </Routes>
         <ToastContainer position="top-right" />
       </div>
