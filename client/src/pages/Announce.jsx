@@ -48,11 +48,11 @@ function CreatePost() {
           formData.append("type", iType)
 
           for (let i = 0; i < files.length; i++) {
-          formData.append("images", files[i])
+               formData.append("images", files[i])
           }
 
           try{
-               const response = await fetch("https://arrendei-630d.onrender.composts", {
+               const response = await fetch("http://arrendei-630d.onrender.composts", {
                     method: "POST",
                     headers: {"Content-Type": "application/json"},
                     body: formData
