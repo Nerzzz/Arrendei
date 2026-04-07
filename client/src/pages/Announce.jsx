@@ -52,7 +52,7 @@ function CreatePost() {
           }
 
           try{
-               const response = await fetch("http://localhost:10000/posts", {
+               const response = await fetch("http://arrendei-630d.onrender.com/posts", {
                     method: "POST",
                     headers: {"Content-Type": "application/json"},
                     body: formData
