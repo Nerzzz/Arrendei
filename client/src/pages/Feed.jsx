@@ -13,7 +13,7 @@ function Feed() {
     <main>
       {!user && <Hero />}
 
-      <section>
+      <section className=''>
         <h2>Anúncios</h2>
         <PostsView endPoint={"/posts"} />
       </section>

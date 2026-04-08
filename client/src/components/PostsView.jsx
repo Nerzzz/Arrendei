@@ -26,7 +26,7 @@ function PostsView({endPoint}) {
      }, [])
 
      return (
-          <div className='mt-[20px] flex flex-wrap gap-[20px] p-[20px] w-full h-full'>
+          <div className='mt-[20px] flex flex-wrap gap-[20px] py-[20px] w-full h-full'>
                {posts && posts.map((post) => {
                     return <Post onOpen={() => {setSelectedPost(post); setOpen(true)}} key={post._id} userUid={post.userUid} id={post._id} title={post.post.title} isRent={post.post.isRent} imgs={post.post.images} />
                })}

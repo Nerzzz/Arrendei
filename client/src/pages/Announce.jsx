@@ -34,6 +34,10 @@ function CreatePost() {
                feedbackToast("Adicione pelo menos uma imagem de seu item!", false)
                return
           }
+          if(files.length > 4){
+               feedbackToast("No máximo 4 imagens!", false)
+               return
+          }
           if(iType == ""){
                feedbackToast("Informe o tipo do seu item!", false)
                return

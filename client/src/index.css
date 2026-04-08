@@ -45,7 +45,7 @@ form{
   flex-direction: column;
   gap: 20px;
 
-  input:not([type="submit"]), textarea{
+  input:not([type="submit"]):not([type="checkbox"]), textarea{
     background-color: var(--color-element-bg);
     padding: 15px;
     border-radius: 10px;

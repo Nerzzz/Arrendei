@@ -41,8 +41,8 @@ router.get("/:postId", async (req, res) =>{
      const postId = req.params.postId
 
      if (!mongoose.Types.ObjectId.isValid(postId)) {
-        return res.status(400).json({ message: "id inválido" })
-    }
+          return res.status(400).json({ message: "id inválido" })
+     }
 
      try{
           const post = await Post.findById(postId)
@@ -82,6 +82,20 @@ router.post("/", upload.array("images"), async (req, res) =>{
 
      } catch(err){
           res.status(400).json({message: err.message})
+     }
+})
+
+router.delete("/:postId", async (req, res) => {
+     const postId = req.params.postId
+
+     if (!mongoose.Types.ObjectId.isValid(postId)) {
+          return res.status(400).json({ message: "id inválido" })
+     }
+
+     try{
+
+     } catch(err){
+          res.status(404).json()
      }
 })
 

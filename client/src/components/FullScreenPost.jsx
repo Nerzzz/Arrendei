@@ -55,7 +55,7 @@ function EditProfileWindow({data, onClose, onUpdate}) {
                     <div className="flex gap-[20px] mt-[20px]">
                          <div className="w-[450px] h-[450px] flex overflow-auto bg-black snap-x snap-mandatory">
                               {data.post.images.map((img) => {
-                                   return <img src={img} key={img} alt="" className={`w-full h-full ${isUpscale?"object-cover":"object-contain"} snap-center shrink-0`} onClick={upscale} />
+                                   return <img src={img} key={img} alt="" className={`w-full h-full ${isUpscale?"object-cover":"object-contain"} snap-center shrink-0`} onDoubleClick={upscale} />
                               })}
                          </div>
                          <div className="max-w-[350px] w-[350px] flex flex-col gap-[20px]">
