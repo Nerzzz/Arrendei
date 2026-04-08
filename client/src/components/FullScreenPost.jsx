@@ -2,16 +2,24 @@ import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../utils/authContext"
 import { Navigate } from "react-router-dom"
 
-import { IconBrandWhatsappFilled, IconXFilled, IconPencilFilled } from "@tabler/icons-react"
+import { IconBrandWhatsappFilled, IconXFilled, IconPencilFilled, IconLoader2 } from "@tabler/icons-react"
 
 import Tag from "./Tag"
+import EditPostWindow from "./EditPostWindow"
 
-function EditProfileWindow({data, onClose}) {
+function EditProfileWindow({data, onClose, onUpdate}) {
 
      const { user, loading } = useContext(AuthContext)
      const [editable, setEditable] = useState(false)
 
      const [ownerData, setOwnerData] = useState(null)
+
+     const [isOpenEdit, setIsOpenEdit] = useState(false)
+
+     function openEdit(){
+          if(isOpenEdit) return setIsOpenEdit(false)
+          setIsOpenEdit(true)
+     }
 
      useEffect(() => {
           if(!user){
@@ -38,10 +46,10 @@ function EditProfileWindow({data, onClose}) {
      }
 
      return (
-          <div className="z-50 bg-[#2c2c2c9c] top-0 left-0 fixed w-dvw h-dvh flex justify-center items-center">
-               {ownerData && <div className="bg-white p-[20px] rounded-[10px]">
+          <div className="z-50 bg-[#2c2c2c9c] top-0 left-0 fixed w-dvw h-dvh flex justify-center items-center gap-[20px] p-[40px]">
+               {ownerData && <div className="bg-white p-[20px] rounded-[10px] h-full">
                     <nav className="w-fit mr-0 ml-auto flex gap-[30px]">
-                         {editable && <button onClick={onClose} className="cursor-pointer flex items-center gap-[5px]"><IconPencilFilled />Editar</button>}
+                         {editable && <button onClick={openEdit} className="cursor-pointer flex items-center gap-[5px]"><IconPencilFilled />Editar</button>}
                          <button onClick={onClose} className="cursor-pointer"><IconXFilled /></button>
                     </nav>
                     <div className="flex gap-[20px] mt-[20px]">
@@ -67,6 +75,8 @@ function EditProfileWindow({data, onClose}) {
                          </div>
                     </div>
                </div>}
+               {!ownerData && <IconLoader2 className="text-accent animate-spin" size={40} />}
+               {isOpenEdit && <EditPostWindow onClose={onClose} onUpdate={onUpdate} data={data} />}
           </div>
      )
 }

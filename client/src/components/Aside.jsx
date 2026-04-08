@@ -6,7 +6,7 @@ import { useEffect, useState } from "react"
 import { useContext } from "react"
 import { AuthContext } from "../utils/authContext"
 
-import { IconHome2Filled, IconUserFilled, IconSpeakerphone } from "@tabler/icons-react"
+import { IconHome2Filled, IconUserFilled, IconSpeakerphone, IconLoader2 } from "@tabler/icons-react"
 
 function Aside() {
 
@@ -41,14 +41,15 @@ function Aside() {
                          </ul>
                     </div>    
                     <div className='bg-gray p-[10px] flex flex-col gap-[10px] rounded-[8px]'>
-                         {userData && <Link className="w-fit flex gap-[10px] items-center">
+                         {userData && <Link to={"/profile"} className="w-fit flex gap-[10px] items-center">
                               <img src="/images/user-placeholder-image.png" className='w-[30px] h-[30px] rounded-[8px]' />
                               <span className="max-w-[100px] truncate">{userData.username}</span>
                          </Link>}
-                         {!userData && <>
+                         {!user && <>
                               <Link to={"/login"} className="bg-element-bg px-[12px] py-[6px] text-center rounded-[10px]">Entrar</Link>
                               <Link to={"/register"} className="grad-green-to-right font-medium text-white px-[12px] py-[6px] text-center rounded-[10px] shadow-[0_0_60px_rgba(0,0,0,0.10)]">Registrar-se</Link>
                          </>}
+                         {user && !userData && <div className="w-full flex justify-center items-center text-accent animate-spin"><IconLoader2 size={28} /></div>}
                     </div>
                </div>
           </aside>
