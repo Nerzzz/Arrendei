@@ -10,12 +10,13 @@ import { IconHome2Filled, IconUserFilled, IconSpeakerphone } from "@tabler/icons
 
 function Aside() {
 
-     const user = useContext(AuthContext)
+     const { user, loading } = useContext(AuthContext)
 
      const [userData, setUserData] = useState(null)
 
      useEffect(() => {
-          if(!user) return
+          if(!user || loading) return
+
           fetch(`https://arrendei-630d.onrender.com/users/${user.uid}`)
           .then(res => res.json())
           .then(data => setUserData(data))

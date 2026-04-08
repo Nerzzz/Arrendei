@@ -90,7 +90,7 @@ function Register() {
                             <span className="text-[10pt] font-semibold">Social</span>
                             <div className="flex gap-[15px]">
                                 <input type="text" name="username" placeholder="Nome de usuário" onChange={e => setUsername(e.target.value)} />
-                                <input type="tel" name="cell" placeholder="Telefone (Whatsapp)" onChange={e => setCell(e.target.value)} />
+                                <input type="tel" maxLength={11} name="cell" placeholder="Telefone (Whatsapp)" onChange={e => setCell(e.target.value)} />
                             </div>
                         </div>
                         <ActionButton text="Criar conta" isLoading={isLoading} />

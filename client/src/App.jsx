@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import { ToastContainer } from "react-toastify"
 
 import { useEffect, useState } from 'react'
@@ -43,14 +43,18 @@ function AppContent(){
 
 function App() {
   const [user, setUser] = useState(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => { setUser(user) })
+    const unsubscribe = onAuthStateChanged(auth, (user) => { 
+      setUser(user)
+      setLoading(false)
+    })
     return () => unsubscribe()
   }, [])
 
   return (
-    <AuthContext.Provider value={user}>
+    <AuthContext.Provider value={{user, loading}}>
       <AppContent />
     </AuthContext.Provider>
   )

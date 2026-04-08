@@ -10,7 +10,7 @@ import { feedbackToast } from "../utils/feedbackToast"
 function CreatePost() {
      let navigate = useNavigate()
 
-     let user = useContext(AuthContext)
+     const {user, loading} = useContext(AuthContext)
 
      const [title, setTitle] = useState("")
      const [desc, setDesc] = useState("")
