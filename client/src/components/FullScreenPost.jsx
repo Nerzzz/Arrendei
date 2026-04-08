@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../utils/authContext"
+import { Navigate } from "react-router-dom"
 
 import { IconBrandWhatsappFilled, IconXFilled, IconPencilFilled } from "@tabler/icons-react"
 
@@ -7,12 +8,15 @@ import Tag from "./Tag"
 
 function EditProfileWindow({data, onClose}) {
 
-     const { user } = useContext(AuthContext)
+     const { user, loading } = useContext(AuthContext)
      const [editable, setEditable] = useState(false)
 
      const [ownerData, setOwnerData] = useState(null)
 
      useEffect(() => {
+          if(!user){
+               <Navigate to={"/login"} />
+          }
           if(user.uid == data.userUid) setEditable(true)
      }, [user, data])
 
