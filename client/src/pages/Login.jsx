@@ -7,6 +7,8 @@ import { auth } from '../../firebase.config'
 import ActionButton from '../components/ActionButton'
 import { feedbackToast } from '../utils/feedbackToast'
 
+import { firebaseResponseFormat } from '../utils/firebaseResponseFormat'
+
 function Login() {
 
   const [email, setEmail] = useState('')
@@ -32,16 +34,16 @@ function Login() {
       feedbackToast("login realizado com sucesso!", true)
       navigate("/")
     }).catch((err) => {
-      feedbackToast(`Ocorreu um erro: ${err.message}`, false)
+      feedbackToast(firebaseResponseFormat(err.code), false)
       setIsLoading(false)
     })
   }
 
   return (
-    <main className="flex justify-center items-center h-full flex-1 bg-[#f7f7f7]">
+    <main className="flex justify-center items-center h-full flex-1">
       <div className='bg-white shadow-[0_0_60px_rgba(0,0,0,0.10)] flex rounded-[20px]'>
-        <img src="/images/mulher-utilizando-o-celular.png" alt="" className="max-w-[300px] object-cover rounded-tl-[20px] rounded-bl-[20px]" />
-        <div className='flex flex-col px-[60px] flex-1 justify-center'>
+        <img src="/images/mulher-utilizando-o-celular.png" alt="" className="max-w-[300px] md:inline hidden object-cover rounded-tl-[20px] rounded-bl-[20px]" />
+        <div className='p-[40px] flex-1 flex flex-col'>
           <h2>Login</h2>
           <p>Preencha seus dados e anuncie em nosso sistema!</p>
           <form className='mt-[30px]' onSubmit={loginHandler}>

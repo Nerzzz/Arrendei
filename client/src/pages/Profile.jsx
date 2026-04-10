@@ -48,10 +48,6 @@ function Profile() {
           </div>
           
           <div className='h-full flex sm:items-end items-center mt-0 gap-[10px] flex-col'>
-            <button className='flex gap-[8px] cursor-pointer'>
-              <IconPencilCog />
-              <span>Editar Perfil</span>
-            </button>
             <button onClick={logoutHandle} className='flex gap-[8px] cursor-pointer w-fit bg-transparent text-red-500'>
               <IconLogout />
               <span>Sair</span>

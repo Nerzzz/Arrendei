@@ -12,13 +12,14 @@ function PostsView({endPoint}) {
      const [fething, setFething] = useState(true)
 
      function fetchPosts(){
-         setPosts([])
+          setPosts([])
      
-         fetch(`https://arrendei-630d.onrender.com${endPoint}`)
-         .then(res => res.json())
-         .then(data => setPosts(data))
-
-         setFething(false)
+          fetch(`https://arrendei-630d.onrender.com${endPoint}`)
+          .then(res => res.json())
+          .then((data) => {
+               setPosts(data)
+               setFething(false)
+          })
      }
      
      useEffect(() => {
@@ -32,13 +33,13 @@ function PostsView({endPoint}) {
      }
 
      return (
-          <div className='mt-[20px] flex flex-wrap lg:justify-normal justify-center gap-[20px] py-[20px] w-fit h-full'>
+          <div className='mt-[20px] flex flex-1 flex-wrap lg:justify-normal justify-center gap-[20px] py-[20px] w-full h-full'>
                {posts && posts.map((post) => {
                     return <Post onOpen={() => {setSelectedPost(post); setOpen(true)}} key={post._id} userUid={post.userUid} id={post._id} title={post.post.title} type={post.post.type} isRent={post.post.isRent} imgs={post.post.images} />
                })}
 
                {open && <FullScreenPost onUpdate={handleUpdate} onClose={() => setOpen(false)} data={selectedPost}/>}
-               {fething && <div className='flex h-100 justify-center items-center'>
+               {fething && <div className='flex flex-1 h-100 w-100 justify-center items-center'>
                     <IconLoader2 className="text-accent animate-spin" size={40} />
                </div>}
           </div>

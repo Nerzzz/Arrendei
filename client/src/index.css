@@ -38,6 +38,7 @@ section{
 
 .Toastify{
   margin: 0;
+  padding: 0;
 }
 
 form{
@@ -57,6 +58,12 @@ form{
 
   input:not([type="submit"]):focus, input:not([type="submit"]):hover, textarea:hover{
     border: 1px solid var(--color-accent);
+  }
+}
+
+@media screen and (max-width: 450) {
+  input:not([type="submit"]):not([type="checkbox"]), textarea{
+    min-width: 100px;
   }
 }
 

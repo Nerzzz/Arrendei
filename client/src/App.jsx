@@ -25,7 +25,7 @@ function AppContent(){
   const hideAside = location.pathname === "/login" || location.pathname === "/register"
 
   return(
-    <div className="min-h-screen flex">
+    <div className="h-screen flex">
       {!hideAside && <Aside />}
       <div className="flex-1 flex flex-col overflow-y-auto h-[100dvh]">
         <Routes>
